@@ -1,0 +1,180 @@
+/* line 29, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+.file-editor {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #141414;
+  padding-top: 10px;
+  color: #E2E2E2; }
+
+/* line 37, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+.side-bar {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 150px;
+  max-width: 220px;
+  padding-top: 20px; }
+  /* line 43, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .side-bar > div {
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px; }
+  /* line 49, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .side-bar > input {
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px; }
+  /* line 55, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .side-bar #save-as-input {
+    margin-bottom: 10px;
+    width: 100%; }
+  /* line 60, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .side-bar #specify-file-name {
+    width: 100%; }
+  @media screen and (max-width: 30em) {
+    /* line 37, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+    .side-bar {
+      display: none; } }
+
+/* line 69, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+.file-edit-container {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #dae1e9;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px; }
+  /* line 80, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .file-edit-container .tabs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0;
+    background: #141414; }
+    /* line 85, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+    .file-edit-container .tabs > li {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      max-width: 170px;
+      border-left: 1px solid black;
+      background: #2b2b2b;
+      height: 30px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      cursor: pointer; }
+      /* line 96, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+      .file-edit-container .tabs > li:last-child {
+        border-right: 1px solid black; }
+      /* line 100, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+      .file-edit-container .tabs > li.active {
+        background: #366849;
+        border-left: 1px solid #018CC9;
+        color: #191d22; }
+  /* line 108, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .file-edit-container .tab {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    /* line 116, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+    .file-edit-container .tab li:first-of-type {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1; }
+    /* line 120, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+    .file-edit-container .tab li:nth-of-type(2) {
+      -webkit-transition: .1s ease-out;
+      transition: .1s ease-out;
+      -webkit-transform: scaleY(0) scaleX(0);
+              transform: scaleY(0) scaleX(0);
+      opacity: 0; }
+    /* line 125, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+    .file-edit-container .tab li:nth-of-type(2).active {
+      -webkit-transform: scaleY(1) scaleX(1);
+              transform: scaleY(1) scaleX(1);
+      opacity: 1; }
+  /* line 130, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .file-edit-container .file-edit {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  /* line 136, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .file-edit-container .edit-footer {
+    background: #2b2b2b;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px; }
+    /* line 145, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+    .file-edit-container .edit-footer .item {
+      padding-left: 10px;
+      padding-right: 10px; }
+      /* line 149, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+      .file-edit-container .edit-footer .item i {
+        margin-right: 5px; }
+  /* line 155, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+  .file-edit-container #editor {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+
+/* line 160, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+input[text] {
+  color: tranparent; }
+
+/* line 164, /home/cristian/projects/electron/edictor/styles/components/editor.scss */
+.hidden {
+  display: none; }
+
+/* line 1, /home/cristian/projects/electron/edictor/styles/components/scaffolding.scss */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+/* line 7, /home/cristian/projects/electron/edictor/styles/components/scaffolding.scss */
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none; }

@@ -1,0 +1,166 @@
+// variables
+$break-xs: 30em;
+$break-sm: 48em;
+$break-md: 62em;
+$break-lg: 75em;
+
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   lighten($gray-base, 33.5%) !default; // #555
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+
+$jb-dark-grey: #39434e;
+$jb-light-blue: #f3f6fa;
+$jb-medium-blue: #dae1e9;
+
+$j-red: #ff3124;
+$j-green: #199F85;
+$j-blue: #018CC9;
+$j-orange: #ffa73b;
+$j-brown: #a33f34;
+
+$main-background: #141414;
+$side-bar-color: $jb-medium-blue;
+$tab-border-color: darken($main-background, 13.5%);
+$active-tab-color: darken($jb-dark-grey, 15%);
+
+.file-editor {
+    flex: 1;
+    display: flex;
+    background: $main-background;
+    padding-top: 10px;
+    color: #E2E2E2;
+}
+
+.side-bar {
+    flex: 1;
+    min-width: 150px;
+    max-width: 220px;
+    padding-top: 20px;
+
+    & > div {
+        padding-bottom: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    & > input {
+        padding-bottom: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #save-as-input {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    #specify-file-name {
+        width: 100%;
+    }
+
+    @media screen and (max-width: $break-xs) {
+        display: none;
+    }
+}
+
+.file-edit-container {
+    flex: 6;
+
+    display: flex;
+    flex-direction: column;
+
+    background: $side-bar-color;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    .tabs {
+        display: flex;
+        margin-top: 0;
+        background: $main-background;
+
+        & > li {
+            flex: 1;
+            max-width: 170px;
+            border-left: 1px solid $tab-border-color;
+            background: lighten($main-background, 9%);
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            &:last-child {
+                border-right: 1px solid $tab-border-color;
+            }
+
+            &.active {
+                background: #366849;
+                border-left: 1px solid $j-blue;
+                color: $active-tab-color;
+            }
+        }
+    }
+
+    .tab {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding-right: 10px;
+        padding-left: 10px;
+        align-items: center;
+
+        & li:first-of-type {
+            flex: 1;
+        }
+
+        & li:nth-of-type(2) {
+            transition: .1s ease-out;
+            transform: scaleY(0) scaleX(0); opacity: 0;
+        }
+
+        & li:nth-of-type(2).active {
+            transform: scaleY(1) scaleX(1); opacity: 1;
+        }
+    }
+
+    .file-edit {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .edit-footer {
+        background: lighten($main-background, 9%);
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+
+        .item {
+            padding-left: 10px;
+            padding-right: 10px;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    #editor {
+        flex: 1;
+    }
+}
+
+input[text] {
+    color: tranparent;
+}
+
+.hidden {
+    display: none;
+}

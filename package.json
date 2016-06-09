@@ -1,0 +1,22 @@
+{
+  "name": "edictor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron main.js"
+  },
+  "author": "Cristian Szabo",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "csswring": "^5.0.0",
+    "electron-prebuilt": "^1.2.2",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.1.1",
+    "gulp-sass": "^2.3.1",
+    "lost": "^6.8.0",
+    "mdi": "^1.6.50"
+  }
+}

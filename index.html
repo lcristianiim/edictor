@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link href="node_modules/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+      <div class="file-editor">
+          <div class="side-bar">
+              <div><button id="save-button">Save</button></div>
+              <div id="choose-name" class="hidden">
+                  <p>Please choose a file name</p>
+                  <input id="specify-file-name" type="text">
+              </div>
+              <div><button id="save-as-button">Save as..</button></div>
+              <div id="save-as-container" class='hidden'>
+                  <input id="save-as-input" type="text">
+                  <button id="save-as-button-execute">Save with custom name</button>
+              </div>
+
+              <input id="open-file" type="file">
+          </div>
+          <div class="file-edit-container">
+              <div class="file-edit">
+                  <ul class="tabs">
+                      <li class="active">
+                          <ul class="tab">
+                              <li></li>
+                              <li><i class="mdi mdi-close"></i></li>
+                          </ul>
+                      </li>
+                  </ul>
+                  <div id="editor"></div>
+              </div>
+              <div class="edit-footer">
+                  <div class="item">UTF-8</div>
+                  <div class="item"><i class="mdi mdi-source-fork"></i>Branch</div>
+              </div>
+          </div>
+      </div>
+
+
+      <script src="./assets/ace/src-noconflict/ace.js" type="text/javascript"></script>
+      <script>
+          var editor = ace.edit("editor");
+          editor.setTheme("ace/theme/twilight");
+          editor.session.setMode("ace/mode/javascript");
+      </script>
+
+      <script type="text/javascript">
+          var openFileBtn = document.getElementById('open-file');
+          var saveFileBtn = document.getElementById('save-button');
+          var saveAsFileBtn = document.getElementById('save-as-button');
+
+          var currentFile = 'unnamed';
+
+          setTabName(currentFile);
+
+          // function isFileSelected() {
+          //     if (document.getElementById('open-file').value != 'No file chosen') {
+          //         return true;
+          //     }
+          // }
+
+          function setTabName(name) {
+
+              var tabs = document.getElementsByClassName('tabs')[0].children;
+              for (var i = 0; i < tabs.length; i++) {
+                  if ( tabs[i].className == 'active' ) {
+                      tabs[i].children[0].children[0].innerHTML = name;
+                  }
+              }
+          };
+
+          openFileBtn.onchange = function () {
+              var file = openFileBtn.files[0];
+              currentFile = file.path;
+
+              if(file) {
+                  var reader = new FileReader();
+                  reader.readAsText(file, "UTF-8");
+                  reader.onload = function (event) {
+                      setTabName(file.name);
+                      editor.setValue(event.target.result);
+                  };
+              }
+          };
+
+          saveFileBtn.addEventListener('click', function(event) {
+              const fs = require('fs');
+              var text = editor.getValue('editor');
+
+              if (checkClass(document.getElementById('choose-name'), 'hidden')) {
+
+                  if (currentFile != 'unnamed') {
+                      fs.writeFile(currentFile, text, function(err) {
+                          if(err) {
+                              return console.log(err);
+                          }
+
+                          alert("The " + currentFile + " file was saved!");
+                      });
+                  } else {
+                      document.getElementById('choose-name').classList.remove('hidden');
+                  }
+
+              } else {
+                  var setFileName = document.getElementById('specify-file-name').value;
+                  if (setFileName != 'unnamed') {
+                      fs.writeFile(setFileName, text, function(err) {
+                          if(err) {
+                              return console.log(err);
+                          }
+
+                          document.getElementById('choose-name').setAttribute('class', 'hidden');
+                          setTabName(setFileName);
+
+                          alert("The " + setFileName + " file was saved!");
+
+                      });
+                  }
+              }
+          });
+
+          saveAsFileBtn.addEventListener('click', function(event) {
+              const fs = require('fs');
+              var text = editor.getValue('editor');
+
+              document.getElementById('save-as-container').classList.remove('hidden');
+              document.getElementById('save-as-button').classList.add('hidden');
+
+              var saveAsExecute = document.getElementById('save-as-button-execute');
+              saveAsExecute.addEventListener('click', function(event) {
+                  var fileNameToBe = document.getElementById('save-as-input').value;
+
+                  fs.writeFile(fileNameToBe, text, function(err) {
+                      if(err) {
+                          return console.log(err);
+                      }
+
+                      setTabName(fileNameToBe);
+
+                      document.getElementById('save-as-container').classList.add('hidden');
+                      document.getElementById('save-as-button').classList.remove('hidden');
+
+                      alert("The " + fileNameToBe + " file was saved!");
+
+                  });
+
+              });
+          });
+
+          function checkClass (element, cls) {
+              if (element.classList.contains(cls)) {
+                  return true
+              };
+          };
+
+      </script>
+
+  </body>
+</html>
