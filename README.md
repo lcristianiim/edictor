@@ -1,12 +1,11 @@
 # edictor
 
 ## Installation
+
+```sh
 git clone https://github.com/lcristianiim/edictor.git
 cd edictor
 electron-packeger ./ --all // This will pack for all platforms
-
-```sh
-$ npm i edictor
 ```
 
 ## Documentation
